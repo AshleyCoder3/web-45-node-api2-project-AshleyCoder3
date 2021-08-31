@@ -47,5 +47,31 @@ router.post('/', async (req, res) => {
     res.status(500).json({ message: 'There was an error while saving the post to the database' })
   }
 })
+router.put('/:id', (req, res) => {
+  const { id } = req.params
+  const newPost = req.body
+
+  if (!newPost.title || !newPost.contents) {
+    res.status(404).json({
+      message: "The post with the specified ID does not exist"
+    })
+  } else {
+    Post.update(id, newPost)
+      .then((updatePost) => {
+        if (updatePost) {
+          res.status(200).json(updatePost)
+        } else {
+          res.status(400).json({
+            message: "Please provide title and contents for the post"
+          })
+            .catch(() => {
+              res.status(500).json({
+                message: "The post information could not be modified"
+              })
+            })
+        }
+      })
+  }
+})
 
 module.exports = router
