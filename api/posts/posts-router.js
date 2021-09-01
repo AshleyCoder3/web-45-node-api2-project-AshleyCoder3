@@ -80,37 +80,42 @@ router.put('/:id', (req, res) => {
   }
 })
 router.delete('/:id', async (req, res) => {
+
   try {
     const { id } = req.params
-    const removeId = await Post.findById(id)
+    const postId = await Post.findById(id)
     const deleted = await Post.remove(id)
-    if (removeId) {
+    if (postId) {
       if (deleted) {
-        res.status(200).json(removeId)
+        res.status(200).json(postId)
       }
     } else {
       res.status(404).json({
         message: "The post with the specified ID does not exist"
       })
     }
-  } catch (err) {
+  } catch {
     res.status(500).json({
       message: "The post could not be removed"
     })
   }
 })
+router.get('/:id/comments', async (req, res) => {
+  try {
+    const { id } = req.params
+    const comment = await Post.findPostComments(id)
+    if (comment.length > 0) {
+      res.status(200).json(comment)
+    } else {
+      res.status(404).json({
+        message: "The post with the specified ID does not exist"
+      })
+    }
+  } catch {
+    res.status(500).json({
+      message: "The comments information could not be retrieved"
+    })
+  }
+})
 
 module.exports = router
-
-// const { id } = req.params
-// Post.remove(id)
-//   .then(removed => {
-//     if (!removed) {
-//       res.status(404).json({ message: "The user with the specified ID does not exist" })
-//     } else {
-//       res.status(200).json(removed)
-//     }
-//   })
-//   .catch(() => {
-//     res.status(500).json({ message: "The user could not be removed" })
-//   })

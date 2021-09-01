@@ -84,7 +84,7 @@ Your instructor should have communicated what submission method to use for this 
   - update the post document in the database using the new information sent in the `request body`.
   - return HTTP status code `200` (OK).
   - return the newly updated _post_. -->
-
+<!-- 
 #### 5 [DELETE] /api/posts/:id
 - `remove()`: the remove method accepts an `id` as its first argument and upon successfully deleting the post from the database it returns a promise that resolves to the number of records deleted.
 
@@ -96,7 +96,7 @@ Your instructor should have communicated what submission method to use for this 
 - If there's an error in removing the _post_ from the database:
 
   - respond with HTTP status code `500`.
-  - return the following JSON: `{ message: "The post could not be removed" }`.
+  - return the following JSON: `{ message: "The post could not be removed" }`. -->
 
 #### 6 [GET] /api/posts/:id/comments
 - `findPostComments()`: the findPostComments accepts a `postId` as its first argument and returns a promise that resolves to an array of all comments on the post associated with the post id.
