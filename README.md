@@ -42,8 +42,8 @@ Your instructor should have communicated what submission method to use for this 
 - If there's an error in retrieving the _post_ from the database:
   - respond with HTTP status code `500`.
   - return the following JSON: `{ message: "The post information could not be retrieved" }`. -->
-
-<!-- #### 3 [POST] /api/posts
+<!-- 
+#### 3 [POST] /api/posts
 - `insert()`: calling insert passing it a `post` object will add it to the database and return a promise that resolves to an object with the `id` of the inserted post. The object looks like this: `{ id: 123 }`.
 
 - If the request body is missing the `title` or `contents` property:
@@ -60,7 +60,7 @@ Your instructor should have communicated what submission method to use for this 
 - If there's an error while saving the _post_:
   - respond with HTTP status code `500` (Server Error).
   - return the following JSON: `{ message: "There was an error while saving the post to the database" }`. -->
-
+<!-- 
 #### 4 [PUT] /api/posts/:id
 - `update()`: accepts two arguments, the first is the `id` of the post to update and the second is an object with the `changes` to apply. It returns a promise that resolves to the count of updated records. If the count is 1 it means the record was updated correctly.
 
@@ -83,7 +83,7 @@ Your instructor should have communicated what submission method to use for this 
 
   - update the post document in the database using the new information sent in the `request body`.
   - return HTTP status code `200` (OK).
-  - return the newly updated _post_.
+  - return the newly updated _post_. -->
 
 #### 5 [DELETE] /api/posts/:id
 - `remove()`: the remove method accepts an `id` as its first argument and upon successfully deleting the post from the database it returns a promise that resolves to the number of records deleted.
